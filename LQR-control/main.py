@@ -36,3 +36,11 @@ plt.title('iLQR Trajectory Solution')
 plt.xlabel('x (m)')
 plt.ylabel('y (m)')
 plt.legend(['Start', 'Goal', 'Trajectory'])
+
+# Set quadrotor's initial state and simulate
+x0 = np.array([0.5, 0.5, 0, 1, 1, 0])
+x, u, t = simulate_quadrotor(x0, tf, quadrotor, False)
+
+anim, fig = create_animation(x, tf)
+plt.close()
+anim.save('Quadrotor_LQR.gif')
